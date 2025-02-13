@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín 💖</title>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ffaaaa);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+            max-width: 90%;
+            width: 500px;
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #ff4d4d;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .yes:hover {
+            background-color: #ff3333;
+        }
+        .no {
+            background-color: #4d4dff;
+            color: white;
+        }
+        .no:hover {
+            background-color: #3333ff;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #ff4d4d;
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in-out;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .emojis {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .emojis span {
+            position: absolute;
+            display: block;
+            font-size: 40px; 
+            animation: animateEmojis 6s linear infinite;
+            user-select: none;
+        }
+        @keyframes animateEmojis {
+            0% {
+                transform: translateY(-10%) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(50vh) scale(1);
+            }
+            100% {
+                transform: translateY(110vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+        .glow {
+            text-shadow: 0 0 5px #ff4d4d, 0 0 7px #ff4d4d; 
+        }
+    </style>
+</head>
+<body>
+    <div class="emojis" id="emojisContainer">
+    </div>
+    <div class="card">
+        <h1 id="question" class="glow">¿Quieres ser mi San Valentín? 💕</h1>
+        <div id="buttons">
+            <button class="yes" id="yesButton" onclick="handleYesClick()">Sí</button>
+            <button class="no" onclick="handleNoClick()">No</button>
+        </div>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const noMessages = [
+            "Piénsalo otra vez...",
+            "mahal ko 💔 <br> <img src='../Pictures/Screenshots/webfoto.png' width='200px' height='200px'>",
+            "De verdad mahalco 🥺",
+            "No me quiero enojar <br> <img src='../Pictures/Screenshots/webfoto2.png' width='200px' height='200px'>",
+            "No te quiero pegar",
+            "Dio mio dame paciencia",
+            "Se nota que me amas mucho 😃", 
+            "Si no lo pulsas significa que te gusta alguien mas a parte de mí",
+            "SI no lo pulsas eres gay"
+        ];
+        const emojis = ["❤️", "💖"]; 
+        let lastNoMessageIndex = -1;
+
+        function showMessage(text, isFinalMessage = false) {
+            const messageElement = document.getElementById('message');
+            messageElement.innerHTML = text;
+            messageElement.style.color = "#ff4d4d";
+            messageElement.style.fontWeight = "bold";
+            messageElement.style.display = "block";
+            if (isFinalMessage) {
+                messageElement.style.fontSize = "2.5rem";
+                messageElement.classList.add("glow");
+            } else {
+                messageElement.style.fontSize = "1.5rem";
+            }
+        }
+
+        function handleNoClick() {
+            const yesButton = document.getElementById('yesButton');
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${currentSize * 1.2}px`;
+
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * noMessages.length);
+            } while (randomIndex === lastNoMessageIndex);
+            lastNoMessageIndex = randomIndex;
+
+            showMessage(noMessages[randomIndex]);
+        }
+
+        function handleYesClick() {
+            const questionElement = document.getElementById('question');
+            const buttonsDiv = document.getElementById('buttons');
+            const messageElement = document.getElementById('message');
+            questionElement.style.display = "none";
+            buttonsDiv.style.display = "none";
+
+            showMessage('SIIII, I LOVE YOUUU SO MUCH MY LOVE 💖😍', true);
+
+            const emojisContainer = document.getElementById('emojisContainer');
+            for (let i = 0; i < 30; i++) {
+                const emoji = document.createElement('span');
+                emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.animationDelay = Math.random() * 3 + 's';
+                emojisContainer.appendChild(emoji);
+            }
+        }
+
+        const emojisContainer = document.getElementById('emojisContainer');
+        for (let i = 0; i < 20; i++) {
+            const emoji = document.createElement('span');
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]; 
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDelay = Math.random() * 5 + 's';
+            emojisContainer.appendChild(emoji);
+        }
+    </script>
+</body>
+</html>
