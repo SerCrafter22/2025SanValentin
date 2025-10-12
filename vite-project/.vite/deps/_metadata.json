@@ -1,0 +1,15 @@
+{
+  "hash": "17de8bca",
+  "configHash": "421b870f",
+  "lockfileHash": "b1bd511b",
+  "browserHash": "e38cea0d",
+  "optimized": {
+    "canvas-confetti": {
+      "src": "../../node_modules/canvas-confetti/dist/confetti.module.mjs",
+      "file": "canvas-confetti.js",
+      "fileHash": "545109b6",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}

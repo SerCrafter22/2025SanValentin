@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Valentín 💖</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="manifest" href="/manifest.webmanifest">
 </head>
 <body>
-    <div class="emojis" id="emojisContainer">
+<div class="emojis" id="emojisContainer" aria-hidden="true">
     </div>
     <div class="card">
         <h1 id="question" class="glow">¿Quieres ser mi San Valentín? 💕</h1>
@@ -15,8 +16,11 @@
             <button class="yes" id="yesButton">Sí</button>
             <button class="no">No</button>
         </div>
-        <p id="message"></p>
+        <p id="message" aria-live="polite"></p>
+        <div id="share-container" style="display: none;">
+            <button id="share-button">Compartir</button>
+        </div>
     </div>
-    <script src="js/script.js"></script>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
