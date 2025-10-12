@@ -101,7 +101,7 @@
         .emojis span {
             position: absolute;
             display: block;
-            font-size: 40px; 
+            font-size: 40px;
             animation: animateEmojis 6s linear infinite;
             user-select: none;
         }
@@ -120,7 +120,7 @@
             }
         }
         .glow {
-            text-shadow: 0 0 5px #ff4d4d, 0 0 7px #ff4d4d; 
+            text-shadow: 0 0 5px #ff4d4d, 0 0 7px #ff4d4d;
         }
     </style>
 </head>
@@ -144,13 +144,18 @@
             "No me quiero enojar <br> <img src='./photoTwo.png' width='200px' height='200px'>",
             "No te quiero pegar",
             "Dio mio dame paciencia",
-            "Se nota que me amas mucho 😃", 
+            "Se nota que me amas mucho 😃",
             "Si no lo pulsas significa que te gusta alguien mas a parte de mí",
             "SI no lo pulsas eres gay"
         ];
-        const emojis = ["❤️", "💖"]; 
+        const emojis = ["❤️", "💖"];
         let lastNoMessageIndex = -1;
 
+        /**
+         * Displays a message on the screen.
+         * @param {string} text - The message to display.
+         * @param {boolean} [isFinalMessage=false] - Whether this is the final message.
+         */
         function showMessage(text, isFinalMessage = false) {
             const messageElement = document.getElementById('message');
             messageElement.innerHTML = text;
@@ -165,6 +170,10 @@
             }
         }
 
+        /**
+         * Handles the click event for the "No" button.
+         * It increases the size of the "Yes" button and displays a random message.
+         */
         function handleNoClick() {
             const yesButton = document.getElementById('yesButton');
             const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
@@ -179,6 +188,10 @@
             showMessage(noMessages[randomIndex]);
         }
 
+        /**
+         * Handles the click event for the "Yes" button.
+         * It displays a confirmation message and creates a celebratory emoji animation.
+         */
         function handleYesClick() {
             const questionElement = document.getElementById('question');
             const buttonsDiv = document.getElementById('buttons');
@@ -198,10 +211,13 @@
             }
         }
 
+        /**
+         * Initializes the falling emoji animation.
+         */
         const emojisContainer = document.getElementById('emojisContainer');
         for (let i = 0; i < 20; i++) {
             const emoji = document.createElement('span');
-            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)]; 
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
             emoji.style.left = Math.random() * 100 + 'vw';
             emoji.style.animationDelay = Math.random() * 5 + 's';
             emojisContainer.appendChild(emoji);
