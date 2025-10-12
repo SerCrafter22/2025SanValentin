@@ -16,6 +16,6 @@ Click the "Yes" button to accept the Valentine's request or the "No" button to s
 
 ## Files
 
-- `home.html`: The main HTML file containing the structure, styling, and functionality of the web page.
+- `index.html`: The main HTML file containing the structure, styling, and functionality of the web page.
 - `photoOne.png`: An image used in one of the "No" button responses.
 - `photoTwo.png`: An image used in one of the "No" button responses.
