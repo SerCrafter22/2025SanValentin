@@ -8,7 +8,7 @@ This project is a single-page web application that presents a "Will you be my Va
 
 ## Setup
 
-No special setup is required. Simply open the `index.html` file in a web browser to view the page.
+No special setup is required. Simply open the `home.html` file in a web browser to view the page.
 
 ## Usage
 
@@ -16,6 +16,6 @@ Click the "Yes" button to accept the Valentine's request or the "No" button to s
 
 ## Files
 
-- `index.html`: The main HTML file containing the structure, styling, and functionality of the web page.
+- `home.html`: The main HTML file containing the structure, styling, and functionality of the web page.
 - `photoOne.png`: An image used in one of the "No" button responses.
 - `photoTwo.png`: An image used in one of the "No" button responses.
