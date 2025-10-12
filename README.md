@@ -8,7 +8,7 @@ This project is a single-page web application that presents a "Will you be my Va
 
 ## Setup
 
-No special setup is required. Simply open the `home.html` file in a web browser to view the page.
+No special setup is required. Simply open the `index.html` file in a web browser to view the page.
 
 ## Usage
 
